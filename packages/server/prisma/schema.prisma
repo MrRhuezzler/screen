@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Slide {
+  id       Int     @id @default(autoincrement())
+  name     String
+  order    Int
+  isActive Boolean @default(true)
+  file     File?
+}
+
+model File {
+  id        String  @id @default(uuid())
+  mediaType String?
+  path      String?
+  url       String?
+  fileName  String
+  mimeType  String
+  size      Float
+  slide     Slide?  @relation(fields: [slideId], references: [id])
+  slideId   Int?    @unique
+}

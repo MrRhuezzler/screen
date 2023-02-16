@@ -1,0 +1,17 @@
+{
+  "name": "screen",
+  "private": true,
+  "version": "1.0.0",
+  "author": "MrRhuezzler <anonymouspyro369@gmail.com>",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"wsrun --parallel dev\""
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0",
+    "wsrun": "^5.2.4"
+  }
+}
